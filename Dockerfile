@@ -1,4 +1,5 @@
 FROM php:8.2-apache
+LABEL version="1.0.1"
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
