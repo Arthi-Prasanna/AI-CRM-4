@@ -31,17 +31,21 @@ WORKDIR /var/www/html
 # Copy the application code
 COPY ./lhc_web /var/www/html
 
-# Ensure permissions
-RUN chown -R www-data:www-data /var/www/html \
+# Ensure permissions and create missing directories
+RUN mkdir -p /var/www/html/cache \
+    /var/www/html/var/userphoto \
+    /var/www/html/var/storagemms \
+    /var/www/html/var/storagev2 \
+    /var/www/html/var/storage \
+    /var/www/html/var/tmpfiles \
+    /var/www/html/var/tcpdf \
+    /var/www/html/settings \
+    && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/cache \
-    && chmod -R 755 /var/www/html/var/userphoto \
-    && chmod -R 755 /var/www/html/var/storagemms \
-    && chmod -R 755 /var/www/html/var/storagev2 \
-    && chmod -R 755 /var/www/html/var/storage \
-    && chmod -R 755 /var/www/html/var/tmpfiles \
-    && chmod -R 755 /var/www/html/var/tcpdf \
+    && chmod -R 755 /var/www/html/var \
     && chmod -R 755 /var/www/html/settings
 
 EXPOSE 80
 
 CMD ["apache2-foreground"]
+
