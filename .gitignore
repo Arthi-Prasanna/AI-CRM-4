@@ -1,5 +1,4 @@
 # Composer
-/lhc_web/lib/vendor/
 /composer.phar
 /.idea/
 /.phpunit.cache
